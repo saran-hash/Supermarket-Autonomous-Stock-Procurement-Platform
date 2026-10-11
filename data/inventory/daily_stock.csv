@@ -1,0 +1,7 @@
+﻿sku_id,product_name,category,current_stock,base_unit,min_safety_stock,reorder_point,standard_order_batch,lead_time_days
+SKU-OIL-SUN-001,Sunflower Oil 1L,Edible Oils,18.0,pcs,20.0,40.0,60.0,2
+SKU-GROC-SUG-001,White Refined Sugar 1kg,Staples,45.0,kg,50.0,100.0,150.0,3
+SKU-GROC-RICE-001,Basmati Rice Premium 5kg,Staples,300.0,kg,60.0,120.0,100.0,2
+SKU-DAIR-GHEE-001,Pure Cow Ghee 500ml,Dairy & Ghee,12.0,pcs,10.0,25.0,40.0,2
+SKU-GROC-ATTA-001,Chakki Fresh Atta 10kg,Staples,80.0,kg,40.0,90.0,100.0,3
+SKU-DRYF-CAS-001,Whole Cashews (Kaju) 500g,Dry Fruits,8.0,kg,5.0,15.0,20.0,2

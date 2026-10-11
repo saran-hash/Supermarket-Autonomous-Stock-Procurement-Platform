@@ -1,0 +1,4 @@
+﻿dealer_id,dealer_name,contact_person,preferred_channel,phone_whatsapp,email,payment_terms,rating
+DLR-001,Sri Lakshmi Traders,Raman,whatsapp,+919876543210,orders@srilakshmi.com,Net 15,4.8
+DLR-002,Metro Wholesale Ltd,Anita,email,+919812345678,procure@metrowholesale.in,Net 30,4.6
+DLR-003,Annapoorna Provisions,Suresh,whatsapp,+919822334455,sales@annapoornaprov.com,COD,4.4

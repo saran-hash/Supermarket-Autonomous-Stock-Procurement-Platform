@@ -1,0 +1,7 @@
+﻿sku_id,unit_price,min_order_qty,pack_size,lead_time_days,in_stock
+SKU-OIL-SUN-001,94.00,15,15 pcs/box,1,True
+SKU-GROC-SUG-001,39.00,50,25 kg/bag,2,True
+SKU-GROC-RICE-001,76.50,25,25 kg/bag,1,True
+SKU-DAIR-GHEE-001,275.00,10,5 pcs/box,1,True
+SKU-GROC-ATTA-001,33.00,25,25 kg/bag,2,True
+SKU-DRYF-CAS-001,675.00,5,5 kg/box,1,True
