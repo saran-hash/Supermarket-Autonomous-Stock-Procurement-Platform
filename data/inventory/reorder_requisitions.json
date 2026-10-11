@@ -1,0 +1,52 @@
+[
+  {
+    "sku_id": "SKU-OIL-SUN-001",
+    "product_name": "Sunflower Oil 1L",
+    "category": "Edible Oils",
+    "current_stock": 18.0,
+    "adjusted_rop": 88.0,
+    "base_unit": "pcs",
+    "deficit": 70.0,
+    "recommended_order_qty": 90
+  },
+  {
+    "sku_id": "SKU-GROC-SUG-001",
+    "product_name": "White Refined Sugar 1kg",
+    "category": "Staples",
+    "current_stock": 45.0,
+    "adjusted_rop": 220.0,
+    "base_unit": "kg",
+    "deficit": 175.0,
+    "recommended_order_qty": 225.0
+  },
+  {
+    "sku_id": "SKU-DAIR-GHEE-001",
+    "product_name": "Pure Cow Ghee 500ml",
+    "category": "Dairy & Ghee",
+    "current_stock": 12.0,
+    "adjusted_rop": 55.0,
+    "base_unit": "pcs",
+    "deficit": 43.0,
+    "recommended_order_qty": 56
+  },
+  {
+    "sku_id": "SKU-GROC-ATTA-001",
+    "product_name": "Chakki Fresh Atta 10kg",
+    "category": "Staples",
+    "current_stock": 80.0,
+    "adjusted_rop": 198.0,
+    "base_unit": "kg",
+    "deficit": 118.0,
+    "recommended_order_qty": 163.0
+  },
+  {
+    "sku_id": "SKU-DRYF-CAS-001",
+    "product_name": "Whole Cashews (Kaju) 500g",
+    "category": "Dry Fruits",
+    "current_stock": 8.0,
+    "adjusted_rop": 33.0,
+    "base_unit": "kg",
+    "deficit": 25.0,
+    "recommended_order_qty": 32.5
+  }
+]

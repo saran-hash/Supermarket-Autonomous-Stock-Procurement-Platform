@@ -1,0 +1,23 @@
+{
+  "as_of_date": "2026-10-25",
+  "active_events": [
+    {
+      "event": "Diwali",
+      "start_date": "2026-11-01",
+      "days_away": 7,
+      "multiplier": 2.2,
+      "categories": [
+        "Edible Oils",
+        "Staples",
+        "Dairy & Ghee",
+        "Dry Fruits"
+      ]
+    }
+  ],
+  "category_multipliers": {
+    "Edible Oils": 2.2,
+    "Staples": 2.2,
+    "Dairy & Ghee": 2.2,
+    "Dry Fruits": 2.2
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "DLR-001": {
+    "dealer_name": "Sri Lakshmi Traders",
+    "preferred_channel": "whatsapp",
+    "phone_whatsapp": "919876543210",
+    "email": "orders@srilakshmi.com",
+    "items": [
+      {
+        "sku_id": "SKU-OIL-SUN-001",
+        "product_name": "Sunflower Oil 1L",
+        "base_unit": "pcs",
+        "quantity": 90,
+        "unit_price": 92.5,
+        "total_amount": 8325.0,
+        "lead_time_days": 2
+      },
+      {
+        "sku_id": "SKU-GROC-SUG-001",
+        "product_name": "White Refined Sugar 1kg",
+        "base_unit": "kg",
+        "quantity": 225.0,
+        "unit_price": 38.0,
+        "total_amount": 8550.0,
+        "lead_time_days": 3
+      },
+      {
+        "sku_id": "SKU-GROC-ATTA-001",
+        "product_name": "Chakki Fresh Atta 10kg",
+        "base_unit": "kg",
+        "quantity": 163.0,
+        "unit_price": 32.0,
+        "total_amount": 5216.0,
+        "lead_time_days": 3
+      }
+    ],
+    "total_order_value": 22091.0
+  },
+  "DLR-002": {
+    "dealer_name": "Metro Wholesale Ltd",
+    "preferred_channel": "email",
+    "phone_whatsapp": "919812345678",
+    "email": "procure@metrowholesale.in",
+    "items": [
+      {
+        "sku_id": "SKU-DAIR-GHEE-001",
+        "product_name": "Pure Cow Ghee 500ml",
+        "base_unit": "pcs",
+        "quantity": 56,
+        "unit_price": 265.0,
+        "total_amount": 14840.0,
+        "lead_time_days": 3
+      }
+    ],
+    "total_order_value": 14840.0
+  },
+  "DLR-003": {
+    "dealer_name": "Annapoorna Provisions",
+    "preferred_channel": "whatsapp",
+    "phone_whatsapp": "919822334455",
+    "email": "sales@annapoornaprov.com",
+    "items": [
+      {
+        "sku_id": "SKU-DRYF-CAS-001",
+        "product_name": "Whole Cashews (Kaju) 500g",
+        "base_unit": "kg",
+        "quantity": 32.5,
+        "unit_price": 675.0,
+        "total_amount": 21937.5,
+        "lead_time_days": 1
+      }
+    ],
+    "total_order_value": 21937.5
+  }
+}
