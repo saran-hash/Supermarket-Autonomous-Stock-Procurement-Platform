@@ -1,4 +1,4 @@
-﻿# Supermarket Autonomous Stock & Procurement Platform
+# Supermarket Autonomous Stock & Procurement Platform
 
 An autonomous multi-agent platform for supermarket inventory monitoring, seasonal demand forecasting, and automated purchase order dispatch.
 
@@ -48,11 +48,13 @@ Like modern industrial data platforms, this repository enforces a strict separat
 │   ├── procurement-optimizer/  # Evaluates dealers and selects optimal vendor
 │   └── po-dispatch/            # Generates PDF PO and dispatches via WhatsApp / Email
 ├── agent/
-│   ├── agent.py                # Multi-agent orchestrator
+│   ├── agent.py                # Multi-agent orchestrator with approval gate
 │   ├── context.py              # Context & system prompt builder
+│   ├── llm_client.py           # OpenRouter API client with .env loading
+│   ├── smart_notifier.py       # AI-crafted WhatsApp POs & Manager Approval Briefs
 │   ├── guardrails.py           # Spending gates, safety bounds, and read-only sandboxing
 │   └── channels/               # Communication adapters (WhatsApp, Email)
-├── tests/                      # Automated test suite
+├── tests/                      # Automated test suite (skills, storelib, notifier)
 └── run_pipeline.py             # End-to-end simulation runner
 ```
 
@@ -60,11 +62,17 @@ Like modern industrial data platforms, this repository enforces a strict separat
 
 ## ⚡ Quick Start
 
-### 1. Installation
+### 1. Installation & Environment Setup
 ```bash
 python -m venv .venv
 source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 pip install -r requirements.txt
+```
+
+Set your OpenRouter API key in `.env`:
+```ini
+OPENROUTER_API_KEY=sk-or-v1-xxxxxxxxxxxx
+OPENROUTER_MODEL=google/gemini-2.0-flash-001  # or meta-llama/llama-3.3-70b-instruct
 ```
 
 ### 2. Run Deterministic Skills Directly
@@ -86,12 +94,32 @@ python skills/po-dispatch/dispatch_po.py --dry-run
 
 ### 3. Run Full Simulation Pipeline
 ```bash
+# Run simulation cycle
 python run_pipeline.py
+
+# Run with interactive Store Manager approval prompts for high-value orders
+python run_pipeline.py --interactive
+
+# Run with automated policy override approval
+python run_pipeline.py --auto-approve
 ```
+
+### 4. Launch Streamlit Web Dashboard
+```bash
+streamlit run app.py
+```
+Open [http://localhost:8501](http://localhost:8501) to interact with:
+- 💬 **AI Store Copilot Chat:** Conversational autonomous inventory assistant.
+- 📦 **Live Inventory Monitor:** Visual inventory tables with deficit badges and ROP thresholds.
+- 🤝 **Supplier Optimization:** Vendor catalogs, pricing comparisons, and spending warnings.
+- 📋 **Orders & WhatsApp:** Purchase Order history and formatted WhatsApp dispatch message preview.
+
 
 ---
 
-## 🛡️ Guardrails & Safety
-- **Spending Approval Gates:** Reorders exceeding configured spending limits flag an approval alert rather than auto-dispatching.
+## 🛡️ Guardrails & AI Smart Approval Flow
+- **AI-Drafted WhatsApp Purchase Orders:** Formats clean, mobile-optimized WhatsApp orders with delivery timelines, urgency tags, and items breakdowns saved to `data/orders/notifications/`.
+- **Manager Approval Briefs:** When a PO exceeds `MAX_AUTO_ORDER_LIMIT` (Rs. 50,000), the AI generates an executive decision brief outlining the root-cause demand surge, vendor choice rationale, and stock-out risks.
+- **Spending Approval Gates:** Orders exceeding configured spending limits are paused for manager approval rather than auto-dispatching.
 - **Dry-run Mode:** Enables verification of all dealer choices and PO formats before touching external APIs.
 - **Audit Logging:** Every generated PO is tracked with a unique ID (`PO-YYYYMMDD-XXXX`) in `data/orders/po_log.csv`.

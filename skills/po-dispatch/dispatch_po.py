@@ -1,4 +1,4 @@
-﻿"""Deterministic skill to format and dispatch Purchase Orders via WhatsApp and Email."""
+"""Deterministic skill to format and dispatch Purchase Orders via WhatsApp and Email."""
 
 from __future__ import annotations
 
@@ -46,6 +46,10 @@ def run_dispatch(dry_run: bool = False) -> list[dict]:
     print(f" [PURCHASE ORDER DISPATCH] {mode_text}")
     print("==========================================================================================")
 
+    from agent.smart_notifier import generate_whatsapp_po_message, save_notification_artifact
+    from agent.channels.whatsapp import send_whatsapp_po
+    from agent.channels.email_delivery import send_email_po
+
     log_rows = []
 
     for d_id, d_data in plan.items():
@@ -56,10 +60,14 @@ def run_dispatch(dry_run: bool = False) -> list[dict]:
         email = d_data["email"]
         total_val = d_data["total_order_value"]
 
+        # Generate human-readable AI-crafted WhatsApp PO
+        po_message = generate_whatsapp_po_message(po_id, d_data)
+        artifact_path = save_notification_artifact(po_id, "po_message", po_message)
+
         print(f"\n* {po_id} -> {dealer_name} ({d_id})")
         print(f"   Channel: {channel.upper()} | Target: {phone if channel == 'whatsapp' else email}")
         print(f"   Total Value: Rs.{total_val:,.2f}")
-        print(f"   Items:")
+        print(f"   Items ({len(d_data['items'])} SKUs):")
 
         for itm in d_data["items"]:
             print(f"     - {itm['product_name']}: {itm['quantity']} {itm['base_unit']} @ Rs.{itm['unit_price']} (Rs.{itm['total_amount']:,.2f})")
@@ -76,6 +84,15 @@ def run_dispatch(dry_run: bool = False) -> list[dict]:
                 "dispatch_status": "DISPATCHED" if not dry_run else "SIMULATED",
             })
 
+        # Deliver via appropriate channel
+        if not dry_run:
+            if channel == "whatsapp":
+                send_whatsapp_po(phone, po_message)
+            elif channel == "email":
+                send_email_po(email, f"Official Purchase Order: {po_id}", po_message)
+        else:
+            print(f"   [Simulation] Formatted message saved to: {artifact_path.name}")
+
         dispatched_orders.append({
             "po_id": po_id,
             "dealer_id": d_id,
@@ -84,6 +101,7 @@ def run_dispatch(dry_run: bool = False) -> list[dict]:
             "total_value": total_val,
             "items_count": len(d_data["items"]),
             "status": "DISPATCHED" if not dry_run else "SIMULATED",
+            "message_artifact": str(artifact_path),
         })
 
     # Append to po_log.csv
